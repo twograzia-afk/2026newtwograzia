@@ -4,6 +4,7 @@ import React, { useContext } from "react";
 import * as profileData from "./data";
 import Link from "next/link";
 import Image from "next/image";
+import { useRouter } from "next/navigation";
 import SimpleBar from "simplebar-react";
 import { Button } from "@/components/ui/button";
 import {
@@ -16,6 +17,13 @@ import { CustomizerContext } from "@/app/context/customizer-context";
 
 const Profile = () => {
   const { activeDir } = useContext(CustomizerContext);
+  const router = useRouter();
+
+  const handleLogout = async () => {
+    await fetch("/api/auth/logout", { method: "POST" });
+    router.push("/login");
+    router.refresh();
+  };
 
   return (
     <div className="relative group/menu ps-4">
@@ -46,17 +54,17 @@ const Profile = () => {
               />
               <div>
                 <h5 className="card-title text-sm mb-0.5 font-medium">
-                  Mathew Anderson
+                  TwoGrazia Admin
                 </h5>
                 <span className="card-subtitle text-muted font-normal">
-                  Designer
+                  Yönetici
                 </span>
                 <p className="card-subtitle font-normal text-muted mb-0 mt-1 flex items-center">
                   <Icon
                     icon="tabler:mail"
                     className="text-base me-1 relative top-0.5"
                   />
-                  info@tailwindadmin.com
+                  twograzia.com
                 </p>
               </div>
             </div>
@@ -92,8 +100,12 @@ const Profile = () => {
           {/* Logout Button */}
 
           <div className="pt-2 px-7">
-            <Button color="outlineprimary" className="w-full rounded-md">
-              <Link href="/auth/auth1/login"> Logout</Link>
+            <Button
+              color="outlineprimary"
+              className="w-full rounded-md"
+              onClick={handleLogout}
+            >
+              Logout
             </Button>
           </div>
         </DropdownMenuContent>

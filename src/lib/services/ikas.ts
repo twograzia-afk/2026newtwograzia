@@ -81,9 +81,64 @@ export async function getDashboardStats() {
 
   try {
     const data = await ikasFetch(query);
-    return data.data.listOrder;
+    return data?.data?.listOrder;
   } catch (error) {
     console.error("Error fetching Ikas stats:", error);
+    return null;
+  }
+}
+
+export async function getInventory() {
+  const query = `
+    query {
+      listProduct(pagination: { limit: 20 }) {
+        data {
+          id
+          name
+          mainImage {
+            url
+          }
+          variants {
+            id
+            sku
+            stocks {
+              stock
+            }
+          }
+        }
+      }
+    }
+  `;
+
+  try {
+    const data = await ikasFetch(query);
+    return data?.data?.listProduct;
+  } catch (error) {
+    console.error("Error fetching Ikas inventory:", error);
+    return null;
+  }
+}
+
+export async function getCustomers() {
+  const query = `
+    query {
+      listCustomer(pagination: { limit: 20 }) {
+        data {
+          id
+          firstName
+          lastName
+          email
+          phoneNumber
+        }
+      }
+    }
+  `;
+
+  try {
+    const data = await ikasFetch(query);
+    return data?.data?.listCustomer;
+  } catch (error) {
+    console.error("Error fetching Ikas customers:", error);
     return null;
   }
 }

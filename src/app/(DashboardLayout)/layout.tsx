@@ -1,5 +1,5 @@
 "use client";
-import React, { Activity, useContext } from "react";
+import React, { useContext } from "react";
 import Sidebar from "./layout/vertical/sidebar/Sidebar";
 import Header from "./layout/vertical/header/Header";
 import { Customizer } from "./layout/shared/customizer/Customizer";
@@ -19,11 +19,11 @@ export default function Layout({
           <div className="page-wrapper flex w-full">
             {/* Header/sidebar */}
 
-            <Activity mode={activeLayout == "vertical" ? "visible" : "hidden"}>
+            {activeLayout === "vertical" && (
               <div className="xl:block hidden">
                 <Sidebar />
               </div>
-            </Activity>
+            )}
 
             <div className="body-wrapper w-full bg-white dark:bg-dark">
               {/* Top Header  */}
@@ -35,11 +35,10 @@ export default function Layout({
 
               {/* Body Content  */}
               <div
-                className={` ${
-                  isLayout == "full"
+                className={` ${isLayout == "full"
                     ? "w-full py-[30px] md:px-[30px] px-5"
                     : "container py-[30px]"
-                } ${activeLayout == "horizontal" ? "xl:mt-3" : ""}
+                  } ${activeLayout == "horizontal" ? "xl:mt-3" : ""}
             `}
               >
                 {children}

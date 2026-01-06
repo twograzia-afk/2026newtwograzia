@@ -74,16 +74,14 @@ const Header = ({ layoutType }: HeaderPropsType) => {
   return (
     <>
       <header
-        className={`sticky top-0 z-[2] ${
-          isSticky
+        className={`sticky top-0 z-[2] ${isSticky
             ? "bg-white dark:bg-dark shadow-md fixed w-full"
             : "bg-transparent"
-        }`}
+          }`}
       >
         <nav
-          className={`px-2 dark:border-gray-700 rounded-none bg-transparent dark:bg-transparent py-4 sm:px-6 ${
-            layoutType == "horizontal" ? "container mx-auto" : ""
-          }  ${isLayout == "full" ? "!max-w-full" : ""}`}
+          className={`px-2 dark:border-gray-700 rounded-none bg-transparent dark:bg-transparent py-4 sm:px-6 ${layoutType == "horizontal" ? "container mx-auto" : ""
+            }  ${isLayout == "full" ? "!max-w-full" : ""}`}
         >
           <div className="mx-auto flex flex-wrap items-center justify-between">
             <span
@@ -119,28 +117,28 @@ const Header = ({ layoutType }: HeaderPropsType) => {
 
                 <Search />
 
-                <AppLinks />
+                <div className="flex gap-2 items-center ms-4">
+                  <Link
+                    href="/ikas/orders"
+                    className="text-sm text-link dark:text-darklink dark:hover:text-primary px-3 py-2 rounded-md hover:bg-lightprimary hover:text-primary flex items-center justify-center transition-colors"
+                  >
+                    Orders
+                  </Link>
 
-                <Link
-                  href="/apps/chats"
-                  className="text-sm text-link dark:text-darklink dark:hover:text-primary px-4 h-10 hover:text-primary flex items-center justify-center"
-                >
-                  Chat
-                </Link>
+                  <Link
+                    href="/ikas/inventory"
+                    className="text-sm text-link dark:text-darklink dark:hover:text-primary px-3 py-2 rounded-md hover:bg-lightprimary hover:text-primary flex items-center justify-center transition-colors"
+                  >
+                    Inventory
+                  </Link>
 
-                <Link
-                  href="/apps/calendar"
-                  className="text-sm text-link dark:text-darklink dark:hover:text-primary px-4 h-10 hover:text-primary flex items-center justify-center"
-                >
-                  Calendar
-                </Link>
-
-                <Link
-                  href="/apps/email"
-                  className="text-sm text-link dark:text-darklink dark:hover:text-primary px-4 h-10 hover:text-primary flex items-center justify-center"
-                >
-                  Email
-                </Link>
+                  <Link
+                    href="/ikas/customers"
+                    className="text-sm text-link dark:text-darklink dark:hover:text-primary px-3 py-2 rounded-md hover:bg-lightprimary hover:text-primary flex items-center justify-center transition-colors"
+                  >
+                    Customers
+                  </Link>
+                </div>
               </div>
             </div>
             {/* mobile-logo */}
@@ -159,7 +157,7 @@ const Header = ({ layoutType }: HeaderPropsType) => {
                       <Icon
                         icon="tabler:moon"
                         width="20"
-                        // className="text-link group-hover:text-primary"
+                      // className="text-link group-hover:text-primary"
                       />
                     </span>
                   </div>
@@ -173,7 +171,7 @@ const Header = ({ layoutType }: HeaderPropsType) => {
                       <Icon
                         icon="solar:sun-bold-duotone"
                         width="20"
-                        // className='group-hover:text-primary'
+                      // className='group-hover:text-primary'
                       />
                     </span>
                   </div>
